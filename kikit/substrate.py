@@ -482,7 +482,10 @@ class Substrate:
         """
         Return shapely interiors of the substrate
         """
-        return self.substrates.interiors
+        if isinstance(self.substrates, MultiPolygon):
+            return [geo for geom in self.substrates.geoms for geo in list(geom.interiors)]
+        else:
+            return self.substrates.interiors
 
     def midpoint(self) -> Tuple[int, int]:
         """
