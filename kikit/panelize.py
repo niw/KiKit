@@ -293,7 +293,7 @@ def removeCutsFromFootprint(footprint):
             continue
         edges.append(edge)
     for e in edges:
-        footprint.Remove(e)
+        footprint.RemoveNative(e)
     return edges
 
 def renameNets(board, renamer):
